@@ -1,0 +1,18 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Вики League Of Legends - Ошибка
+{% endblock %}
+
+{% block body %}
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Упс!</h1>
+            <hr>
+            <p>{{ message }}</p>
+            <div class="buttons">
+                <a href="{% url 'index' %}" class="button is-primary">Вернуться на главную</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

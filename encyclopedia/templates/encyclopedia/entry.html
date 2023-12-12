@@ -1,0 +1,28 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Вики League Of Legends - {{ title }}
+{% endblock %}
+
+{% block body %}
+    <section class="section">
+        <div class="container">
+            <div class="content">
+                {{ content | safe }}
+            </div>
+            <hr>
+            <form action="{% url 'edit' %}" method="POST" class="form">
+                {% csrf_token %}
+                <input type="hidden" name="entry_title" value="{{ title }}">
+                <div class="field is-grouped">
+                    <div class="control">
+                        <input type="submit" value="Редактировать" class="button is-danger">
+                    </div>
+                    <div class="control">
+                        <a href="{% url 'index' %}" class="button is-primary">Домой</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Вики League Of Legends - Поиск
+{% endblock %}
+
+{% block body %}
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Поиск</h1>
+            <hr>
+            {% if recommendation %}
+                <div class="list is-hoverable">
+                    {% for entry in recommendation %}
+                        <a class="list-item" href="{% url 'entry' title=entry %}">{{ entry }}</a>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>Ничего не найдено.</p>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

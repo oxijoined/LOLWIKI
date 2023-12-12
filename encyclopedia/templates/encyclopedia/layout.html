@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <title>{% block title %}Вики League Of Legends{% endblock %}</title>
+        <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/lux/bulmaswatch.min.css">
+    </head>
+    <body>
+        <div class="columns">
+            <div class="sidebar column is-2">
+                <div class="logo-container py-3 px-2" style="display: flex; align-items: center;">
+                    <img src="https://logowik.com/content/uploads/images/league-of-legends7810.jpg" alt="Логотип" class="mr-2" style="width: 50px; height: 50px;">
+                    <h2 class="title is-4">Вики League Of Legends</h2>
+                </div>
+                <form action="{% url 'search' %}" method="POST" class="py-2">
+                    {% csrf_token %}
+                    <div class="control">
+                        <input class="input" type="text" name="q" placeholder="Поиск по энциклопедии">
+                    </div>
+                </form>
+                <aside class="menu">
+                    <ul class="menu-list">
+                        <li><a href="{% url 'index' %}">Главная</a></li>
+                        <li><a href="{% url 'new_page' %}">Создать новую страницу</a></li>
+                        <li><a href="{% url 'rand' %}">Случайная страница</a></li>
+                    </ul>
+                </aside>
+                {% block nav %}
+                {% endblock %}
+            </div>
+            <div class="main column is-10">
+                <section class="section">
+                    {% block body %}
+                    {% endblock %}
+                </section>
+            </div>
+        </div>
+    </body>
+</html>
